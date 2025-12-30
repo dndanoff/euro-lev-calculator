@@ -1,4 +1,4 @@
-const CACHE_NAME = 'euro-lev-calc-v1';
+const CACHE_NAME = 'euro-lev-calc-2024-12-30';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -6,6 +6,13 @@ const urlsToCache = [
   '/app.js',
   '/manifest.json'
 ];
+
+// Listen for skip waiting message
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
 
 self.addEventListener('install', function(event) {
   event.waitUntil(

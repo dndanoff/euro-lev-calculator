@@ -468,3 +468,98 @@ footer {
         font-size: 13px;
     }
 }
+
+/* Update Notification */
+.update-notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    animation: slideUp 0.4s ease-out;
+    max-width: 90%;
+    width: auto;
+}
+
+.update-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.update-message {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.update-btn {
+    background: white;
+    color: #16a34a;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.update-btn:hover {
+    background: #f0fdf4;
+    transform: scale(1.05);
+}
+
+.dismiss-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    line-height: 1;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.dismiss-btn:hover {
+    opacity: 1;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateX(-50%) translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Dark theme update notification */
+[data-theme="dark"] .update-notification {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+}
+
+/* Mobile responsive update notification */
+@media (max-width: 480px) {
+    .update-notification {
+        bottom: 10px;
+        padding: 0.75rem 1rem;
+    }
+    
+    .update-content {
+        gap: 0.75rem;
+    }
+    
+    .update-message {
+        font-size: 0.85rem;
+        flex: 1 1 100%;
+    }
+}

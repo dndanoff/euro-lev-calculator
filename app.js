@@ -4,7 +4,7 @@ const CONFIG = {
     DECIMAL_PLACES: 2,
     ARIA_PRESS_DURATION: 300, // milliseconds
     FAQ_SCROLL_DELAY: 100, // milliseconds
-    DEFAULT_LANG: 'en',
+    DEFAULT_LANG: 'bg',
     DEFAULT_THEME: 'light',
     SERVICE_WORKER_PATH: './sw.js'
 };
@@ -45,6 +45,8 @@ const translations = {
         'aria-received-eur': 'Enter amount received in euros',
         'aria-calc-btn': 'Calculate the change to be returned in euros',
         'banner-text': 'You can pay in Bulgarian Leva (BGN) until 31 January 2026. After that, only Euros (EUR) will be accepted.',
+        'update-available': 'A new version is available!',
+        'update-now': 'Update Now',
         faqs: [
             {
                 q: 'How long can payments be made in both currencies?',
@@ -98,6 +100,8 @@ const translations = {
         'aria-received-eur': 'Въведете получената сума в евро',
         'aria-calc-btn': 'Изчислете рестото, което трябва да бъде върнато в евро',
         'banner-text': 'Можете да плащате в български левове (BGN) до 31 януари 2026 г. След това ще се приемат само евро (EUR).',
+        'update-available': 'Налична е нова версия!',
+        'update-now': 'Обнови сега',
         faqs: [
             {
                 q: 'Докога ще може да се плаща и в двете валути?',
@@ -456,15 +460,57 @@ function initializeFAQToggle() {
     });
 }
 
-// Service Worker registration
+// Service Worker registration with update detection
+let newWorker;
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register(CONFIG.SERVICE_WORKER_PATH)
             .then(function(registration) {
                 console.log('SW registered: ', registration);
+                
+                // Check for updates
+                registration.addEventListener('updatefound', () => {
+                    newWorker = registration.installing;
+                    
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            // New service worker available
+                            showUpdateNotification();
+                        }
+                    });
+                });
             })
             .catch(function(registrationError) {
                 console.log('SW registration failed: ', registrationError);
             });
+    });
+    
+    // Reload when new service worker takes control
+    let refreshing;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (refreshing) return;
+        refreshing = true;
+        window.location.reload();
+    });
+}
+
+/**
+ * Shows the update notification banner
+ */
+function showUpdateNotification() {
+    const notification = document.getElementById('update-notification');
+    notification.style.display = 'block';
+    
+    // Update Now button
+    document.getElementById('update-btn').addEventListener('click', () => {
+        if (newWorker) {
+            newWorker.postMessage({ type: 'SKIP_WAITING' });
+        }
+    });
+    
+    // Dismiss button
+    document.getElementById('dismiss-update').addEventListener('click', () => {
+        notification.style.display = 'none';
     });
 }

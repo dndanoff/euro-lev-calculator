@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="bg" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +15,15 @@
     <div class="info-banner" role="banner" aria-live="polite">
         <div class="info-banner-content" data-i18n="banner-text">
             You can pay in Bulgarian Leva (BGN) until 31 January 2026. After that, only Euros (EUR) will be accepted.
+        </div>
+    </div>
+
+    <!-- Update Notification -->
+    <div id="update-notification" class="update-notification" style="display: none;" role="alert">
+        <div class="update-content">
+            <span class="update-message" data-i18n="update-available">A new version is available!</span>
+            <button id="update-btn" class="update-btn" data-i18n="update-now">Update Now</button>
+            <button id="dismiss-update" class="dismiss-btn" aria-label="Dismiss update notification">×</button>
         </div>
     </div>
 
