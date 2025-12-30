@@ -44,6 +44,7 @@ const translations = {
         'aria-received-bgn': 'Enter amount received in Bulgarian leva',
         'aria-received-eur': 'Enter amount received in euros',
         'aria-calc-btn': 'Calculate the change to be returned in euros',
+        'banner-text': 'You can pay in Bulgarian Leva (BGN) until 31 January 2026. After that, only Euros (EUR) will be accepted.',
         faqs: [
             {
                 q: 'How long can payments be made in both currencies?',
@@ -96,6 +97,7 @@ const translations = {
         'aria-received-bgn': 'Въведете получената сума в български левове',
         'aria-received-eur': 'Въведете получената сума в евро',
         'aria-calc-btn': 'Изчислете рестото, което трябва да бъде върнато в евро',
+        'banner-text': 'Можете да плащате в български левове (BGN) до 31 януари 2026 г. След това ще се приемат само евро (EUR).',
         faqs: [
             {
                 q: 'Докога ще може да се плаща и в двете валути?',

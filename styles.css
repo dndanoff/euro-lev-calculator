@@ -379,3 +379,67 @@ footer {
         font-size: 1.5rem;
     }
 }
+
+/* Info Banner */
+.info-banner {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    animation: slideDown 0.5s ease-out;
+}
+
+.info-banner-content {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeInScale 0.8s ease-out;
+}
+
+/* Dark theme banner */
+[data-theme="dark"] .info-banner {
+    background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive banner */
+@media (max-width: 768px) {
+    .info-banner {
+        padding: 10px 16px;
+    }
+    
+    .info-banner-content {
+        font-size: 13px;
+    }
+}
