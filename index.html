@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Euro Lev Calculator</title>
+    <meta name="description" content="Calculator for euro transition in Bulgaria">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="nav-controls">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" aria-pressed="false">
+                    <span class="theme-icon" aria-hidden="true">🌙</span>
+                </button>
+                <button id="lang-toggle" class="lang-toggle" aria-label="Toggle language" aria-pressed="false">
+                    <span class="lang-text">EN</span>
+                </button>
+            </div>
+            <button id="faq-toggle" class="faq-toggle" data-i18n="faq-button" aria-label="Toggle FAQ section" aria-expanded="false" aria-controls="faq">
+                FAQ
+            </button>
+        </nav>
+        <h1 data-i18n="app-title">Euro Lev Calculator</h1>
+        <p data-i18n="app-subtitle">Change calculator for Bulgaria's euro transition</p>
+    </header>
+
+    <main role="main" id="main-content">
+        <section id="calculator" class="calculator-section" aria-labelledby="calculator-heading">
+            <h2 id="calculator-heading" data-i18n="calculator-title">Change Calculator</h2>
+            
+            <form id="calculator-form" aria-label="Change calculation form">
+                <div class="input-group">
+                    <label for="total-amount" data-i18n="total-amount">Total Amount (EUR)</label>
+                    <input type="number" id="total-amount" min="0" placeholder="0.00" 
+                           aria-required="true" 
+                           aria-describedby="total-amount-desc" 
+                           inputmode="decimal">
+                    <span id="total-amount-desc" class="sr-only">Enter the total purchase amount in euros</span>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="received-bgn" data-i18n="received-bgn">Received (BGN)</label>
+                        <input type="number" id="received-bgn" min="0" placeholder="0.00" 
+                               aria-describedby="received-bgn-desc" 
+                               inputmode="decimal">
+                        <span id="received-bgn-desc" class="sr-only">Enter amount received in Bulgarian leva</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="received-eur" data-i18n="received-eur">Received (EUR)</label>
+                        <input type="number" id="received-eur" min="0" placeholder="0.00" 
+                               aria-describedby="received-eur-desc" 
+                               inputmode="decimal">
+                        <span id="received-eur-desc" class="sr-only">Enter amount received in euros</span>
+                    </div>
+                </div>
+
+                <button type="button" id="calculate-btn" class="calculate-btn" data-i18n="calculate" aria-describedby="calc-btn-desc">Calculate Change</button>
+                <span id="calc-btn-desc" class="sr-only">Calculate the change to be returned in euros</span>
+            </form>
+
+            <div class="result-section" role="region" aria-labelledby="result-heading" aria-live="polite" aria-atomic="true">
+                <div class="result-group result-primary">
+                    <div id="result-heading" class="sr-only">Calculation Result</div>
+                    <label data-i18n="change-eur" id="change-label">Change (EUR)</label>
+                    <div class="result-value" id="change-eur" aria-labelledby="change-label" role="status">0.00</div>
+                    <div class="bgn-formula" id="bgn-formula" style="display: none;" aria-label="BGN conversion formula">
+                        <span id="change-eur-formula">0.00</span> EUR × 1.95583 = <span id="change-bgn">0.00</span> BGN
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculation-explanation" role="region" aria-labelledby="calc-explanation-heading">
+                <h3 id="calc-explanation-heading" data-i18n="calculation-title">How this is calculated:</h3>
+                <div id="calculation-details" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq-section" style="display: none;" aria-labelledby="faq-heading" aria-hidden="true">
+            <h2 id="faq-heading" data-i18n="faq-title">Frequently Asked Questions</h2>
+            <div class="faq-link">
+                <a href="https://www.bnb.bg/AboutUs/PressOffice/POAccessionToTheEuroArea/POAEFIQuestionsAndAnswers/index.htm" 
+                   target="_blank" rel="noopener" data-i18n="official-faq">Official FAQ from Bulgarian National Bank</a>
+            </div>
+            <div id="faq-items" role="list"></div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p data-i18n="footer-text">Fixed exchange rate: 1 EUR = 1.95583 BGN</p>
+        <p data-i18n="footer-note">Rounded to 2 decimal places according to EU rules</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
