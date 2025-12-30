@@ -69,6 +69,7 @@
 
                 <button type="button" id="calculate-btn" class="calculate-btn" data-i18n="calculate" aria-describedby="calc-btn-desc">Calculate Change</button>
                 <span id="calc-btn-desc" class="sr-only">Calculate the change to be returned in euros</span>
+                <div id="error-message" class="error-message" role="alert" aria-live="assertive"></div>
             </form>
 
             <div class="result-section" role="region" aria-labelledby="result-heading" aria-live="polite" aria-atomic="true">
@@ -82,7 +83,7 @@
                 </div>
             </div>
 
-            <div class="calculation-explanation" role="region" aria-labelledby="calc-explanation-heading">
+            <div class="calculation-explanation" role="region" aria-labelledby="calc-explanation-heading" style="display: none;">
                 <h3 id="calc-explanation-heading" data-i18n="calculation-title">How this is calculated:</h3>
                 <div id="calculation-details" aria-live="polite"></div>
             </div>

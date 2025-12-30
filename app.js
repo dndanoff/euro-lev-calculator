@@ -324,8 +324,14 @@ function displayResults(calc) {
     updateElement('change-eur-formula', calc.changeEUR.toFixed(CONFIG.DECIMAL_PLACES));
     updateElement('change-bgn', calc.changeBGN.toFixed(CONFIG.DECIMAL_PLACES));
     
+    // Clear any error messages
+    document.getElementById('error-message').textContent = '';
+    
     // Show BGN formula section
     document.getElementById('bgn-formula').style.display = 'block';
+    
+    // Show calculation explanation section
+    document.querySelector('.calculation-explanation').style.display = 'block';
     
     // Show calculation details
     showCalculationDetails(calc.totalEUR, calc.receivedBGN, calc.receivedEUR, calc.changeEUR);
@@ -378,12 +384,15 @@ function showCalculationDetails(totalEUR, bgn, eur, changeEUR) {
 }
 
 /**
- * Displays an error message in the calculation details area
+ * Displays an error message below the calculate button
  * @param {string} errorKey - Translation key for the error message
  */
 function showError(errorKey) {
-    const details = document.getElementById('calculation-details');
-    details.innerHTML = `<div style="color: var(--warning);">${translations[currentLang][errorKey]}</div>`;
+    const errorContainer = document.getElementById('error-message');
+    errorContainer.textContent = translations[currentLang][errorKey];
+    
+    // Hide calculation explanation section on error
+    document.querySelector('.calculation-explanation').style.display = 'none';
 }
 
 // FAQ functionality
