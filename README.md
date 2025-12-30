@@ -1,6 +1,6 @@
 # Euro Lev Calculator
 
-🌐 **Live App:** https://YOUR_USERNAME.github.io/euro-lev-calculator/
+🌐 **Live App:** https://dndanoff.github.io/euro-lev-calculator/
 
 A Progressive Web App (PWA) for calculating change during Bulgaria's euro transition period (January 2026).
 
