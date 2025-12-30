@@ -1,8 +1,8 @@
 {
   "name": "Euro Lev Calculator",
   "short_name": "EuroLevCalc",
-  "start_url": "./",
-  "scope": "./",
+  "start_url": "/euro-lev-calculator/",
+  "scope": "/euro-lev-calculator/",
   "description": "Change calculator for Bulgaria's euro transition",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -12,13 +12,13 @@
   "categories": ["finance", "utilities", "business"],
   "icons": [
     {
-      "src": "./icon-192.png",
+      "src": "/euro-lev-calculator/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "./icon-512.png",
+      "src": "/euro-lev-calculator/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
