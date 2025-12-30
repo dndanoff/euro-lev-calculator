@@ -1,4 +1,4 @@
-const CACHE_NAME = 'euro-lev-calc-2024-12-30';
+const CACHE_NAME = 'euro-lev-calc-v2024-12-30';
 const urlsToCache = [
   '/',
   '/index.html',

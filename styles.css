@@ -173,8 +173,14 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
+.button-group {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem;
+    margin-bottom: 0;
+}
+
 .calculate-btn {
-    width: 100%;
     padding: 1rem;
     background: var(--primary-color);
     color: white;
@@ -185,6 +191,28 @@ input[type="number"] {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px var(--shadow);
+}
+
+.clear-btn {
+    padding: 1rem;
+    background: var(--text-secondary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+.clear-icon {
+    font-size: 1.3rem;
+    line-height: 1;
 }
 
 .error-message {
@@ -213,6 +241,10 @@ input[type="number"] {
 
 .calculate-btn:hover {
     background-color: var(--primary-hover);
+}
+
+.clear-btn:hover {
+    background-color: var(--text-primary);
 }
 
 .result-section {

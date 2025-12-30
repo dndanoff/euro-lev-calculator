@@ -76,7 +76,13 @@
                     </div>
                 </div>
 
-                <button type="button" id="calculate-btn" class="calculate-btn" data-i18n="calculate" aria-describedby="calc-btn-desc">Calculate Change</button>
+                <div class="button-group">
+                    <button type="button" id="calculate-btn" class="calculate-btn" data-i18n="calculate" aria-describedby="calc-btn-desc">Calculate Change</button>
+                    <button type="button" id="clear-btn" class="clear-btn" aria-label="Clear all inputs">
+                        <span class="clear-icon" aria-hidden="true">⟲</span>
+                        <span class="clear-text" data-i18n="clear">Clear</span>
+                    </button>
+                </div>
                 <span id="calc-btn-desc" class="sr-only">Calculate the change to be returned in euros</span>
                 <div id="error-message" class="error-message" role="alert" aria-live="assertive"></div>
             </form>

@@ -19,6 +19,7 @@ const translations = {
         'received-bgn': 'Paid (BGN)',
         'received-eur': 'Paid (EUR)',
         'calculate': 'Calculate Change',
+        'clear': 'Clear',
         'change-eur': 'Change (EUR)',
         'change-bgn': 'Change (BGN)',
         'calculation-title': 'How this is calculated:',
@@ -73,7 +74,8 @@ const translations = {
         'total-amount': 'Обща сметка (EUR)',
         'received-bgn': 'Платено в лева (BGN)',
         'received-eur': 'Платено в евро (EUR)',
-        'calculate': 'Изчисли Рестото',
+        'calculate': 'Изчисли ресто',
+        'clear': 'Изчисти',
         'change-eur': 'Ресто в евро (EUR)',
         'change-bgn': 'Ресто в лева (BGN)',
         'calculation-title': 'Как се изчислява това:',
@@ -231,6 +233,7 @@ function updateAriaLabels() {
  */
 function initializeCalculator() {
     document.getElementById('calculate-btn').addEventListener('click', calculateChange);
+    document.getElementById('clear-btn').addEventListener('click', clearCalculator);
     
     // Add enter key support
     ['total-amount', 'received-bgn', 'received-eur'].forEach(id => {
@@ -397,6 +400,34 @@ function showError(errorKey) {
     
     // Hide calculation explanation section on error
     document.querySelector('.calculation-explanation').style.display = 'none';
+}
+
+/**
+ * Clears all calculator inputs, results, errors, and calculation state
+ */
+function clearCalculator() {
+    // Clear all input fields
+    document.getElementById('total-amount').value = '';
+    document.getElementById('received-bgn').value = '';
+    document.getElementById('received-eur').value = '';
+    
+    // Clear error messages
+    document.getElementById('error-message').textContent = '';
+    
+    // Reset result displays
+    updateElement('change-eur', '0.00');
+    updateElement('change-eur-formula', '0.00');
+    updateElement('change-bgn', '0.00');
+    
+    // Hide BGN formula and calculation explanation
+    document.getElementById('bgn-formula').style.display = 'none';
+    document.querySelector('.calculation-explanation').style.display = 'none';
+    
+    // Clear calculation details
+    document.getElementById('calculation-details').innerHTML = '';
+    
+    // Reset last calculation state
+    lastCalculation = null;
 }
 
 // FAQ functionality
