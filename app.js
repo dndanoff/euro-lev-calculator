@@ -371,10 +371,10 @@ function showCalculationDetails(totalEUR, bgn, eur, changeEUR) {
     
     details.innerHTML = `
         <div>${t['calc-step-1']} <strong>${totalEUR.toFixed(CONFIG.DECIMAL_PLACES)} EUR</strong></div>
-        <div>${t['calc-step-2']} <strong>${bgn.toFixed(CONFIG.DECIMAL_PLACES)} BGN ÷ ${CONFIG.EXCHANGE_RATE} = ${bgnReceivedInEUR.toFixed(CONFIG.DECIMAL_PLACES)} EUR</strong></div>
         <div>${t['calc-step-3']} <strong>${eur.toFixed(CONFIG.DECIMAL_PLACES)} EUR</strong></div>
+        <div>${t['calc-step-2']} <strong>${bgn.toFixed(CONFIG.DECIMAL_PLACES)} BGN ÷ ${CONFIG.EXCHANGE_RATE} = ${bgnReceivedInEUR.toFixed(CONFIG.DECIMAL_PLACES)} EUR</strong></div>
         <div>${t['calc-step-4']} <strong>${totalReceivedEUR.toFixed(CONFIG.DECIMAL_PLACES)} EUR</strong></div>
-        <div>${t['calc-step-5']} <strong>${totalEUR.toFixed(CONFIG.DECIMAL_PLACES)} EUR - ${totalReceivedEUR.toFixed(CONFIG.DECIMAL_PLACES)} EUR = ${changeEUR.toFixed(CONFIG.DECIMAL_PLACES)} EUR</strong></div>
+        <div>${t['calc-step-5']} <strong>${totalReceivedEUR.toFixed(CONFIG.DECIMAL_PLACES)} EUR - ${totalEUR.toFixed(CONFIG.DECIMAL_PLACES)} EUR = ${changeEUR.toFixed(CONFIG.DECIMAL_PLACES)} EUR</strong></div>
     `;
 }
 

@@ -127,7 +127,7 @@ h2 {
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
     font-weight: 600;
-    scroll-margin-top: 60px;
+    scroll-margin-top: 100px;
 }
 
 .input-group {
@@ -449,6 +449,8 @@ footer {
 @media (max-width: 768px) {
     .input-row {
         grid-template-columns: 1fr;
+        gap: 0;
+        margin-bottom: 1rem;
     }
     
     section {
