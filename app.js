@@ -457,26 +457,54 @@ function updateFAQContent() {
 function initializeFAQToggle() {
     const faqToggle = document.getElementById('faq-toggle');
     const faqSection = document.getElementById('faq');
+    const faqClose = document.getElementById('faq-close');
     
     faqToggle.addEventListener('click', function() {
         const isVisible = faqSection.style.display !== 'none';
         
         if (isVisible) {
-            faqSection.style.display = 'none';
-            faqToggle.classList.remove('active');
-            faqToggle.setAttribute('aria-expanded', 'false');
-            faqSection.setAttribute('aria-hidden', 'true');
+            closeFAQ();
         } else {
-            faqSection.style.display = 'block';
-            faqToggle.classList.add('active');
-            faqToggle.setAttribute('aria-expanded', 'true');
-            faqSection.setAttribute('aria-hidden', 'false');
-            // Smooth scroll to FAQ section
-            setTimeout(() => {
-                faqSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, CONFIG.FAQ_SCROLL_DELAY);
+            openFAQ();
         }
     });
+    
+    faqClose.addEventListener('click', function() {
+        closeFAQ();
+    });
+}
+
+/**
+ * Opens the FAQ section
+ */
+function openFAQ() {
+    const faqToggle = document.getElementById('faq-toggle');
+    const faqSection = document.getElementById('faq');
+    
+    faqSection.style.display = 'block';
+    faqToggle.classList.add('active');
+    faqToggle.setAttribute('aria-expanded', 'true');
+    faqSection.setAttribute('aria-hidden', 'false');
+    // Smooth scroll to FAQ section
+    setTimeout(() => {
+        faqSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, CONFIG.FAQ_SCROLL_DELAY);
+}
+
+/**
+ * Closes the FAQ section
+ */
+function closeFAQ() {
+    const faqToggle = document.getElementById('faq-toggle');
+    const faqSection = document.getElementById('faq');
+    
+    faqSection.style.display = 'none';
+    faqToggle.classList.remove('active');
+    faqToggle.setAttribute('aria-expanded', 'false');
+    faqSection.setAttribute('aria-hidden', 'true');
+    
+    // Scroll to top of page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Service Worker registration with update detection
