@@ -33,7 +33,7 @@ const translations = {
         'calc-step-4': '4. Total payment:',
         'calc-step-5': '5. Change:',
         'error-invalid-input': 'Please enter valid numbers',
-        'error-insufficient-payment': 'Received amount is less than total amount',
+        'error-insufficient-payment': 'Received amount is less than total amount.',
         'aria-total-amount': 'Enter the total purchase amount in euros',
         'aria-received-bgn': 'Enter amount received in Bulgarian leva',
         'aria-received-eur': 'Enter amount received in euros',
@@ -82,7 +82,7 @@ const translations = {
         'calc-step-4': '4. Общо получено:',
         'calc-step-5': '5. Ресто:',
         'error-invalid-input': 'Моля въведете валидни числа',
-        'error-insufficient-payment': 'Получената сума е по-малка от общата сметка',
+        'error-insufficient-payment': 'Получената сума е по-малка от общата сметка.',
         'aria-total-amount': 'Въведете общата сума на покупката в евро',
         'aria-received-bgn': 'Въведете получената сума в български левове',
         'aria-received-eur': 'Въведете получената сума в евро',
@@ -114,7 +114,10 @@ const translations = {
 // State
 let currentLang = localStorage.getItem('language') || CONFIG.DEFAULT_LANG;
 let currentTheme = localStorage.getItem('theme') || CONFIG.DEFAULT_THEME;
-let lastCalculation = null; // Store last calculation for re-rendering on language change
+let lastState = {
+    calculation: null, // Store last calculation for re-rendering on language change
+    error: null // Store last error for re-rendering on language change
+};
 
 // Helper Functions
 /**
@@ -199,8 +202,13 @@ function updateLanguage() {
     updateFAQContent();
     
     // Re-render calculation details if they exist
-    if (lastCalculation) {
-        showCalculationDetails(lastCalculation.totalEUR, lastCalculation.bgn, lastCalculation.eur, lastCalculation.changeEUR);
+    if (lastState.calculation) {
+        showCalculationDetails(lastState.calculation.totalEUR, lastState.calculation.bgn, lastState.calculation.eur, lastState.calculation.changeEUR);
+    }
+    
+    // Re-render error message if it exists
+    if (lastState.error) {
+        showError(lastState.error.errorKey, lastState.error.shortfallEUR, lastState.error.shortfallBGN);
     }
 }
 
@@ -237,6 +245,9 @@ function initializeCalculator() {
  * Main calculation function - orchestrates the change calculation process
  */
 function calculateChange() {
+    // Clear previous results at the start of each calculation
+    clearPreviousResults();
+    
     const inputs = getInputValues();
     
     if (!validateInputs(inputs)) {
@@ -293,7 +304,9 @@ function performCalculation(inputs) {
     
     // Check if payment is sufficient
     if (totalReceivedBGN < totalBGN) {
-        showError('error-insufficient-payment');
+        const shortfallBGN = totalBGN - totalReceivedBGN;
+        const shortfallEUR = roundToTwoDecimals(shortfallBGN / CONFIG.EXCHANGE_RATE);
+        showError('error-insufficient-payment', shortfallEUR, shortfallBGN);
         return null;
     }
     
@@ -337,7 +350,7 @@ function displayResults(calc) {
  * @param {Object} calc - Calculation results
  */
 function storeCalculation(calc) {
-    lastCalculation = {
+    lastState.calculation = {
         totalEUR: calc.totalEUR,
         bgn: calc.receivedBGN,
         eur: calc.receivedEUR,
@@ -379,15 +392,52 @@ function showCalculationDetails(totalEUR, bgn, eur, changeEUR) {
 }
 
 /**
+ * Clears previous calculation results from the display
+ */
+function clearPreviousResults() {
+    // Reset result displays
+    updateElement('change-eur', '0.00');
+    updateElement('change-eur-formula', '0.00');
+    updateElement('change-bgn', '0.00');
+    
+    // Hide BGN formula and calculation explanation
+    document.getElementById('bgn-formula').style.display = 'none';
+    document.querySelector('.calculation-explanation').style.display = 'none';
+    
+    // Clear calculation details
+    document.getElementById('calculation-details').innerHTML = '';
+    
+    // Clear error messages and state
+    document.getElementById('error-message').textContent = '';
+    lastState.error = null;
+}
+
+/**
  * Displays an error message below the calculate button
  * @param {string} errorKey - Translation key for the error message
+ * @param {number} shortfallEUR - Optional shortage amount in EUR
+ * @param {number} shortfallBGN - Optional shortage amount in BGN
  */
-function showError(errorKey) {
+function showError(errorKey, shortfallEUR = null, shortfallBGN = null) {
     const errorContainer = document.getElementById('error-message');
-    errorContainer.textContent = translations[currentLang][errorKey];
+    let errorMessage = translations[currentLang][errorKey];
     
-    // Hide calculation explanation section on error
-    document.querySelector('.calculation-explanation').style.display = 'none';
+    // Add shortage details if provided
+    if (shortfallEUR !== null && shortfallBGN !== null) {
+        const shortageText = currentLang === 'en' 
+            ? ` Need ${shortfallEUR.toFixed(CONFIG.DECIMAL_PLACES)} EUR more (${shortfallBGN.toFixed(CONFIG.DECIMAL_PLACES)} BGN)`
+            : ` Необходими още ${shortfallEUR.toFixed(CONFIG.DECIMAL_PLACES)} EUR (${shortfallBGN.toFixed(CONFIG.DECIMAL_PLACES)} BGN)`;
+        errorMessage += shortageText;
+    }
+    
+    errorContainer.textContent = errorMessage;
+    
+    // Store error state for language switching
+    lastState.error = {
+        errorKey: errorKey,
+        shortfallEUR: shortfallEUR,
+        shortfallBGN: shortfallBGN
+    };
 }
 
 /**
@@ -399,7 +449,7 @@ function clearCalculator() {
     document.getElementById('received-bgn').value = '';
     document.getElementById('received-eur').value = '';
     
-    // Clear error messages
+    // Clear error messages and state
     document.getElementById('error-message').textContent = '';
     
     // Reset result displays
@@ -414,8 +464,9 @@ function clearCalculator() {
     // Clear calculation details
     document.getElementById('calculation-details').innerHTML = '';
     
-    // Reset last calculation state
-    lastCalculation = null;
+    // Reset last state
+    lastState.calculation = null;
+    lastState.error = null;
 }
 
 // FAQ functionality
