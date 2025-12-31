@@ -14,7 +14,6 @@ const translations = {
     en: {
         'app-title': 'Euro Lev Calculator',
         'app-subtitle': 'Change calculator for Bulgaria\'s euro transition',
-        'calculator-title': 'Change Calculator',
         'total-amount': 'Total Amount (EUR)',
         'received-bgn': 'Paid (BGN)',
         'received-eur': 'Paid (EUR)',
@@ -28,12 +27,6 @@ const translations = {
         'official-faq': 'Official FAQ from Bulgarian National Bank',
         'footer-text': 'Fixed exchange rate: 1 EUR = 1.95583 BGN',
         'footer-note': 'Rounded to 2 decimal places according to EU rules',
-        'faq1-q': 'How long can payments be made in both currencies?',
-        'faq1-a': 'Unlike the unlimited exchange of leva to euro, payments in both currencies, known as the dual circulation period, is limited from 1 to 31 January 2026. During this one-month period, the lev and the euro will be in circulation simultaneously, with both currencies having the status of legal tender. After that, from 1 February 2026, the euro will remain the only currency in our country. People will be able to continue exchanging leva, if they still have any, at the BNB, commercial banks or post offices (in settlements where there are no commercial bank offices).',
-        'faq2-q': 'How will prices of goods and services be recalculated in euros?',
-        'faq2-a': 'The conversion of prices and monetary units from leva to euros will be carried out by applying the full digital size of the fixed conversion rate, expressed in six digits, with all five decimal places. It is not allowed to recalculate prices at a rate different from the fixed exchange rate (1.95583 leva = 1 euro). The resulting amount will be rounded to two decimal places based on the third decimal place in accordance with the following mathematical rounding rule: • when the third decimal place is less than five, the second decimal place remains unchanged; • when the third decimal place is equal to or greater than five, the second decimal place is increased by one. For example, if a loaf of bread currently costs 1.70 BGN, the price in euros, after applying the rounding rule at the current exchange rate of the lev to the euro, will be 87 euro cents.',
-        'faq3-q': 'If I pay in leva, how will I get change back - in leva or euros?',
-        'faq3-a': 'During the dual circulation period, i.e. in January 2026, upon receipt of cash payment in leva or euros, the merchant will return the change entirely in euros. For this purpose, merchants will be supplied with euro banknotes and coins even before the date of introduction of the euro. By exception, when the merchant does not have sufficient immediate availability to return the change entirely in euros, they will return the change entirely in leva.',
         'calc-step-1': '1. Total amount:',
         'calc-step-2': '2. Paid in BGN:',
         'calc-step-3': '3. Paid in EUR:',
@@ -70,7 +63,6 @@ const translations = {
     bg: {
         'app-title': 'Евро Лев Калкулатор',
         'app-subtitle': 'Калкулатор за ресто за прехода към евро в България',
-        'calculator-title': 'Калкулатор за Ресто',
         'total-amount': 'Обща сметка (EUR)',
         'received-bgn': 'Платено в лева (BGN)',
         'received-eur': 'Платено в евро (EUR)',
@@ -84,12 +76,6 @@ const translations = {
         'official-faq': 'Официален списък на често задавани въпроси от Българска Народна Банка',
         'footer-text': 'Фиксиран обменен курс: 1 EUR = 1.95583 BGN',
         'footer-note': 'Закръглено до 2 знака след десетичната запетая съгласно правилата на ЕС',
-        'faq1-q': 'Докога ще може да се плаща и в двете валути?',
-        'faq1-a': 'За разлика от неограничената във времето обмяна на левове в евро плащането в двете валути, известно като период на двойното обращение, е ограничено от 1 до 31 януари 2026 г. През този едномесечен период левът и еврото ще бъдат в обращение едновременно, като и двете валути ще бъдат със статут на законно платежно средство. След това, от 1 февруари 2026 г., еврото ще остане единствената валута на страната ни. Хората ще могат да продължат да обменят левове, ако все още разполагат с такива, в БНБ, в търговските банки или в пощенски клонове (в населени места, където няма офиси на търговски банки).',
-        'faq2-q': 'Как ще се преизчисляват цените на стоките и услугите в евро?',
-        'faq2-a': 'Превалутирането на цени и парични единици от левове в евро ще се извърши чрез прилагане на пълния цифров размер на фиксирания курс на преобразуване, изразен в шест цифри, с всичките пет знака след десетичната запетая. Не се разрешава преизчисляване на цени при курс, различен от фиксирания обменен курс (1,95583 лева = 1 евро). Получената сума ще се закръглява до два знака след десетичната запетая на базата на третия знак след десетичната запетая в съответствие със следното математическо правило за закръгляване: • когато третият знак след десетичната запетая е по-малък от пет, вторият знак след десетичната запетая остава непроменен; • когато третият знак след десетичната запетая е равен или по-голям от пет, вторият знак след десетичната запетая се увеличава с едно. Така например, ако един хляб в момента струва 1,70 лв., то цената в евро, след прилагане на правилото за закръгляване при настоящия обменен курс на лева към еврото, ще е 87 евроцента',
-        'faq3-q': 'Ако плащам в левове, как ще ми връщат – в левове или в евро?',
-        'faq3-a': 'В периода на двойно обращение, т.е. през месец януари 2026 г., при получено плащане в брой в левове или в евро търговецът връща остатъка изцяло в евро. За тази цел търговците ще бъдат снабдени с евробанкноти и монети още преди датата на въвеждане на еврото. По изключение, когато търговецът няма достатъчна моментна наличност да върне остатъка изцяло в евро, връща остатъка изцяло в левове.',
         'calc-step-1': '1. Обща сметка:',
         'calc-step-2': '2. Получено в лева:',
         'calc-step-3': '3. Получено в евро:',
@@ -101,7 +87,7 @@ const translations = {
         'aria-received-bgn': 'Въведете получената сума в български левове',
         'aria-received-eur': 'Въведете получената сума в евро',
         'aria-calc-btn': 'Изчислете рестото, което трябва да бъде върнато в евро',
-        'banner-text': 'Можете да плащате в български левове (BGN) до 31 януари 2026 г. След това ще се приемат само евро (EUR).',
+        'banner-text': 'Можете да плащате в български левове (BGN) до 31 януари 2026 г. След това ще се приемат плащания само в евро (EUR).',
         'update-available': 'Налична е нова версия!',
         'update-now': 'Обнови сега',
         faqs: [
@@ -201,7 +187,9 @@ function updateLanguage() {
         element.textContent = translations[currentLang][key];
     });
     
-    document.querySelector('.lang-text').textContent = currentLang.toUpperCase();
+    // Show opposite language in toggle (what it will switch TO)
+    const toggleLang = currentLang === 'en' ? 'BG' : 'EN';
+    document.querySelector('.lang-text').textContent = toggleLang;
     document.documentElement.setAttribute('lang', currentLang);
     
     // Update ARIA labels for inputs
