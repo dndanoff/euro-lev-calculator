@@ -480,14 +480,15 @@ function initializeFAQToggle() {
 function openFAQ() {
     const faqToggle = document.getElementById('faq-toggle');
     const faqSection = document.getElementById('faq');
+    const faqHeading = document.getElementById('faq-heading');
     
     faqSection.style.display = 'block';
     faqToggle.classList.add('active');
     faqToggle.setAttribute('aria-expanded', 'true');
     faqSection.setAttribute('aria-hidden', 'false');
-    // Smooth scroll to FAQ section
+    // Smooth scroll to FAQ heading
     setTimeout(() => {
-        faqSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        faqHeading.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, CONFIG.FAQ_SCROLL_DELAY);
 }
 
