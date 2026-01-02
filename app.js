@@ -6,7 +6,7 @@ const CONFIG = {
     FAQ_SCROLL_DELAY: 100, // milliseconds
     DEFAULT_LANG: 'bg',
     DEFAULT_THEME: 'light',
-    SERVICE_WORKER_PATH: './sw.js'
+    SERVICE_WORKER_PATH: `${APP_CONFIG.BASE_PATH}sw.js`
 };
 
 // Internationalization
